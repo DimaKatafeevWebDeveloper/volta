@@ -43,6 +43,7 @@
     &__btn {
         @media (max-width: 580px) {
             margin-left: auto;
+            margin-bottom: rem(100);
         }
     }
 }

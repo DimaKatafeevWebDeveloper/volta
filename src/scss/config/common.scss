@@ -1,6 +1,5 @@
 // Заголовки, общие БЄМ блоки и проче...
-body {
-}
+
 // * {
 //     line-height: 140%;
 // }
@@ -244,7 +243,7 @@ form {
             background-color var(--bs-transition);
 
         span {
-            @media (max-width: 360px) {
+            @media (max-width: 430px) {
                 display: none;
             }
         }
