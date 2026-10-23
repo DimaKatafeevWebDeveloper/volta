@@ -66,7 +66,7 @@
 
         z-index: -1;
         transition: all 0.5s ease 0s;
-        max-height: 100vh;
+        max-height: 100dvh;
         overflow-y: auto;
         &::before {
             content: "";
