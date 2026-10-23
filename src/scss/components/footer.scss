@@ -1,7 +1,9 @@
 .footer {
     background-color: var(--primary-color);
     border-top: 1px solid var(--gray-color-2);
-
+    @media (max-width: 768px) {
+        padding-bottom: rem(80) !important;
+    }
     @include adaptiveClamp(padding-top, 60, 40);
 
     &__container {
