@@ -1,0 +1,295 @@
+// Заголовки, общие БЄМ блоки и проче...
+body {
+    @media (max-width: 768px) {
+        padding-bottom: rem(70) !important;
+    }
+}
+// * {
+//     line-height: 140%;
+// }
+.title {
+    @include adaptiveClamp(font-size, 36, 26);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: var(--bs-font-family);
+    @media (max-width: 575px) {
+        letter-spacing: 0.1em;
+    }
+    &.m-b {
+        @include adaptiveClamp(margin-bottom, 40, 14);
+    }
+    &.a-c {
+        text-align: center;
+    }
+    &.m-ctr {
+        @media (max-width: 575px) {
+            text-align: center;
+        }
+    }
+}
+
+.text {
+    @include adaptiveClamp(font-size, 18, 14);
+}
+
+.font-text {
+    font-family: var(--bs-font-text);
+}
+
+.font-quote {
+    font-family: var(--bs-font-quote);
+}
+
+.red-text {
+    color: var(--red-color);
+}
+
+.btn {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    min-height: rem(40);
+    @include adaptiveClamp(padding-top, 11.8, 8);
+    @include adaptiveClamp(padding-bottom, 11.8, 8);
+    @include adaptiveClamp(padding-left, 34, 11);
+    @include adaptiveClamp(padding-right, 34, 11);
+    border: rem(1) solid var(--red-color);
+    color: var(--white-color);
+    transition: all 0.3s ease 0s;
+    @include adaptiveClamp(font-size, 16, 13);
+    cursor: pointer;
+    text-align: center;
+    &:hover,
+    &.red:hover {
+        // border: rem(1) solid var(--yellow-color);
+        background: transparent;
+        color: var(--white-color);
+        &::before {
+            border: rem(24) solid var(--red-color);
+        }
+    }
+    // &::before {
+    //     position: absolute;
+    //     content: '';
+    //     width: 100%;
+    //     height: 100%;
+    //     border: rem(1) solid var(--yellow-color);
+    //     top:0;
+    //     left: 0;
+    //     z-index: -1;
+    //     transition: all 0.3s ease  0s;
+    // }
+    &.red {
+        background: var(--red-color);
+        color: var(--white-color);
+        &:hover {
+            color: var(--red-color);
+        }
+    }
+    &.black {
+        color: var(--black-color);
+        &:hover {
+            background: var(--red-color);
+            color: var(--white-color);
+        }
+    }
+
+    &._fon-white {
+        background: var(--white-color);
+        border-color: var(--white-color);
+    }
+    &._fon-black {
+        background: var(--black-color);
+        border-color: var(--black-color);
+        &:hover {
+            background: transparent;
+            border-color: var(--white-color);
+        }
+    }
+}
+
+.bs-link {
+    transition: all 0.3s ease 0s;
+    color: #45494e;
+    &:hover {
+        color: var(--red-color);
+    }
+}
+
+form {
+    &.unlock button {
+        opacity: 1;
+        pointer-events: all;
+    }
+    button {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}
+
+[data-aos^="fade"] {
+    transform: translateZ(0);
+}
+
+.prl-fon {
+    .simpleParallax {
+        height: 100%;
+    }
+    .img {
+        height: 100%;
+    }
+}
+
+.btn-to-top {
+    position: fixed;
+    bottom: rem(30);
+    right: rem(30);
+    width: rem(50);
+    height: rem(50);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 90;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(rem(20)) scale(0.8);
+    transition:
+        opacity var(--bs-transition),
+        visibility var(--bs-transition),
+        transform var(--bs-transition),
+        background-color var(--bs-transition);
+
+    &.is-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    svg {
+        transition: transform var(--bs-transition);
+    }
+
+    &:hover {
+        background-color: var(--red-color);
+        border-color: var(--red-color);
+
+        svg {
+            transform: translateY(rem(-2));
+        }
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+    @media (max-width: 768px) {
+        bottom: rem(76) !important; // Поднимаем кнопку "Наверх" ровно над прилипшей строкой мессенджеров
+    }
+    @media (max-width: 575px) {
+        right: rem(19);
+        width: rem(44);
+        height: rem(44);
+    }
+}
+
+.mobile-cta {
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--white-color);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08);
+        z-index: 1500;
+        padding: rem(10) rem(16);
+
+        padding-bottom: calc(rem(10) + env(safe-area-inset-bottom, 0px));
+    }
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(10);
+        width: 100%;
+    }
+
+    &__btn {
+        flex: 1 1 30%;
+        height: rem(46);
+        border-radius: var(--bs-radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(6);
+        font-family: var(--bs-font-family);
+        font-size: rem(13);
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        transition:
+            transform 0.2s ease,
+            background-color var(--bs-transition);
+
+        span {
+            @media (max-width: 360px) {
+                display: none;
+            }
+        }
+
+        &--tg {
+            background-color: #f1f5f9;
+            color: #0088cc;
+            border: 1px solid #e2e8f0;
+
+            img {
+                height: rem(18);
+                width: rem(18);
+                object-fit: contain;
+            }
+        }
+
+        &--wa {
+            background-color: #e8f5e9;
+            color: #25d366;
+            border: 1px solid #c8e6c9;
+
+            img {
+                height: rem(18);
+                width: rem(18);
+                object-fit: contain;
+            }
+        }
+
+        &--call {
+            background-color: var(--red-color);
+            color: var(--white-color);
+            flex: 1 1 40%;
+            box-shadow: 0 4px 12px rgba(214, 16, 16, 0.2);
+
+            svg {
+                width: rem(15);
+                height: rem(15);
+            }
+        }
+
+        &:active {
+            transform: scale(0.96);
+        }
+    }
+}

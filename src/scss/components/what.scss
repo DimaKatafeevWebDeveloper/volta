@@ -1,0 +1,287 @@
+.page {
+    // .page__what
+
+    &__what {
+    }
+}
+.what {
+    background-color: var(--gray-light);
+
+    @include adaptiveClamp(padding-top, 80, 45);
+    @include adaptiveClamp(padding-bottom, 80, 45);
+    overflow: hidden;
+    // .what__container
+
+    &__container {
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(20);
+        margin-bottom: rem(40);
+        @media (max-width: 360px) {
+            flex-wrap: wrap;
+        }
+    }
+    // .what__title
+
+    &__title {
+        font-weight: 850;
+    }
+
+    // .what__slider
+
+    &__slider {
+        width: 100%;
+
+        @media (max-width: 1200px) {
+            overflow: visible !important;
+        }
+    }
+
+    // .what__content
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: rem(20);
+        @media (min-width: 1201px) {
+            display: grid !important;
+            transform: none !important;
+        }
+        @media (max-width: 1200px) {
+            display: flex;
+            grid-template-columns: none;
+            gap: 0;
+        }
+    }
+
+    // .what__item
+
+    &__item {
+        height: auto;
+        @media (max-width: 1200px) {
+            flex-shrink: 0;
+        }
+    }
+
+    &__nav {
+        display: none;
+
+        @media (max-width: 1200px) {
+            display: flex;
+            align-items: center;
+            gap: rem(12);
+            flex-shrink: 0;
+        }
+        @media (max-width: 360px) {
+            margin-left: auto;
+        }
+    }
+
+    &__arrow {
+        position: static !important;
+        width: rem(40) !important;
+        height: rem(40) !important;
+        margin-top: 0 !important;
+        background: #ffffff;
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        transition:
+            background-color 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.2s ease;
+
+        &::after {
+            font-family: swiper-icons;
+            font-size: rem(12) !important;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        &--prev::after {
+            content: "next" !important;
+            transform: rotate(180deg);
+        }
+        &--next::after {
+            content: "next" !important;
+        }
+
+        &:not(.swiper-button-disabled):hover {
+            background-color: #ffffff;
+            border-color: var(--red-color);
+            transform: scale(1.05);
+
+            &::after {
+                color: var(--red-color) !important;
+            }
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0.3;
+            cursor: default;
+            background: #f8fafc;
+            border-color: #e2e8f0;
+            &::after {
+                color: #94a3b8 !important;
+            }
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+
+        @include adaptiveClamp(margin-top, 50, 32);
+
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+    &__btn {
+        min-width: rem(320);
+        padding: rem(16) rem(32) !important;
+
+        text-transform: uppercase;
+
+        transition:
+            background-color 0.25s ease,
+            transform 0.2s ease,
+            box-shadow 0.25s ease;
+
+        @media (max-width: 480px) {
+            min-width: auto;
+            width: 100%;
+            min-width: none;
+        }
+
+        &:active {
+            transform: scale(0.98); // Легкий физический отклик при клике
+        }
+    }
+}
+.title {
+}
+.swiper {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+}
+.item-what {
+    display: flex;
+    background: var(--white-color);
+    border-radius: var(--bs-radius);
+    border: 1px solid var(--border-colo);
+    overflow: hidden;
+    height: 100%;
+    // .item-what__body
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    // .item-what__image
+
+    &__image {
+        padding-bottom: 65%;
+        overflow: hidden;
+        img {
+            transition: transform 0.5s ease;
+            inset: 0;
+        }
+    }
+
+    // .item-what__content
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: rem(24) rem(20);
+        flex-grow: 1;
+    }
+
+    // .item-what__icon
+
+    &__icon {
+        width: rem(24);
+        height: rem(24);
+
+        margin-bottom: rem(16);
+        transition:
+            background-color 0.3s ease,
+            transform 0.3s ease;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        mask-position: center;
+    }
+    .item-what__svg-icon {
+        width: rem(24);
+        height: rem(24);
+        margin-bottom: rem(16);
+        display: block;
+        transition: transform 0.3s ease;
+
+        path {
+            fill: var(--primary-color); // По умолчанию красим иконку в темный цвет
+            transition: fill 0.3s ease; // Плавное изменение цвета
+        }
+    }
+    // .item-what__title
+
+    &__title {
+        font-family: var(--bs-font-family);
+        font-size: rem(18);
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--primary-color);
+        margin-bottom: rem(10);
+        transition: color 0.3s ease;
+    }
+
+    // .item-what__text
+
+    &__text {
+        font-family: var(--bs-font-text);
+        font-size: rem(14);
+        line-height: 1.45;
+        color: var(--gray-color);
+        margin-top: auto;
+    }
+    transition: all 0.3s ease 0s;
+    &:hover {
+        @media (min-width: 1201px) {
+            transform: translateY(-6px);
+            border-color: rgba(225, 29, 72, 0.2);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+
+            .item-what__image img {
+                transform: scale(1.04);
+            }
+
+            .item-what__title {
+                color: var(--red-color);
+            }
+
+            // Мгновенный и надежный перекрас иконки при ховере на карточку
+            .item-what__svg-icon {
+                transform: translateY(-2px);
+
+                path {
+                    fill: var(--red-color) !important; // Меняем цвет заливки на красный
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,277 @@
+.reviews {
+    background-color: var(--gray-light);
+
+    @include adaptiveClamp(padding-top, 80, 45);
+    @include adaptiveClamp(padding-bottom, 80, 45);
+    overflow: hidden;
+
+    &__top {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: rem(20);
+        @include adaptiveClamp(margin-bottom, 40, 24);
+    }
+
+    &__titles {
+        flex-grow: 1;
+    }
+
+    &__title {
+        font-weight: 850;
+        color: var(--primary-color);
+        margin-bottom: rem(10);
+    }
+
+    &__subtitle {
+        font-family: var(--bs-font-text);
+        font-size: rem(16);
+        color: var(--gray-color);
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: rem(12);
+        flex-shrink: 0;
+        margin-bottom: rem(4);
+    }
+
+    &__arrow {
+        position: static !important;
+        width: rem(40) !important;
+        height: rem(40) !important;
+        margin-top: 0 !important;
+        background: var(--white-color);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+        &::after {
+            font-family: swiper-icons;
+            font-size: rem(12) !important;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        &--prev::after {
+            content: "next" !important;
+            transform: rotate(180deg);
+        }
+        &--next::after {
+            content: "next" !important;
+        }
+
+        &:not(.swiper-button-disabled):hover {
+            border-color: var(--red-color) !important;
+            &::after {
+                color: var(--red-color) !important;
+            }
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0.3;
+            cursor: default;
+            background: var(--gray-light);
+            border-color: var(--border-color);
+            &::after {
+                color: var(--gray-color) !important;
+            }
+        }
+    }
+
+    &__slider {
+        width: 100%;
+        overflow: visible !important;
+    }
+
+    &__wrapper {
+        display: flex;
+    }
+}
+
+.item-review {
+    height: auto;
+    flex-shrink: 0;
+
+    width: rem(440) !important;
+
+    @media (max-width: 1200px) {
+        width: rem(380) !important;
+    }
+    @media (max-width: 575px) {
+        width: rem(290) !important;
+    }
+
+    &__body {
+        background: var(--white-color);
+        border: 1px solid var(--border-color) !important;
+        border-radius: var(--bs-radius);
+        padding: rem(30) rem(24);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: var(--bs-shadow);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    &__main-content {
+        margin-bottom: rem(24);
+    }
+
+    &__stars {
+        display: flex;
+        gap: rem(4);
+        margin-bottom: rem(14);
+
+        svg {
+            width: rem(16);
+            height: rem(16);
+            fill: #f59e0b;
+        }
+    }
+
+    &__subject {
+        font-family: var(--bs-font-family);
+        font-size: rem(18);
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: rem(10);
+        text-align: left;
+    }
+
+    &__text {
+        font-family: var(--bs-font-text);
+        font-size: rem(14);
+        line-height: 1.5;
+        color: var(--gray-color);
+        text-align: left;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--border-color);
+        padding-top: rem(18);
+        margin-top: auto;
+    }
+
+    &__author {
+        display: flex;
+        flex-direction: column;
+        gap: rem(2);
+        text-align: left;
+    }
+
+    &__name {
+        font-family: var(--bs-font-family);
+        font-size: rem(15);
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+
+    &__date {
+        font-family: var(--bs-font-text);
+        font-size: rem(12);
+        color: var(--gray-color);
+    }
+
+    &__doc {
+        flex: 0 0 rem(44);
+        height: rem(56);
+        border-radius: rem(4);
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        position: relative;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &-hover {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(214, 16, 16, 0.15);
+            opacity: 0;
+            transition: opacity var(--bs-transition);
+            z-index: 2;
+
+            &::before {
+                content: "+";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                font-size: rem(18);
+                font-weight: 600;
+            }
+        }
+
+        &:hover .item-review__doc-hover {
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        @media (min-width: 993px) {
+            .item-review__body {
+                border-color: var(--red-color) !important;
+                transform: translateY(-4px) !important;
+                box-shadow: var(--hover-shadow) !important;
+            }
+        }
+    }
+
+    &__video-btn {
+        flex: 0 0 rem(44);
+        width: rem(44);
+        height: rem(44);
+        background-color: rgba(214, 16, 16, 0.1);
+        border: 1px solid rgba(214, 16, 16, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+            background-color var(--bs-transition),
+            border-color var(--bs-transition),
+            transform var(--bs-transition);
+
+        .review-play-btn__icon {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: rem(6) 0 rem(6) rem(10);
+            border-color: transparent transparent transparent var(--red-color);
+            margin-left: rem(2);
+            transition: border-color var(--bs-transition);
+        }
+
+        // Эффект наведения на кнопку видео-отзыва
+        &:hover {
+            background-color: var(--red-color);
+            border-color: var(--red-color);
+            transform: scale(1.08);
+
+            .review-play-btn__icon {
+                border-color: transparent transparent transparent #ffffff;
+            }
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+}

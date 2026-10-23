@@ -1,0 +1,111 @@
+.questions {
+    background-color: var(--gray-light);
+
+    @include adaptiveClamp(padding-top, 60, 40);
+    @include adaptiveClamp(padding-bottom, 80, 45);
+}
+
+.banner-questions {
+    position: relative;
+    width: 100%;
+    height: rem(180);
+    border-radius: var(--bs-radius);
+    overflow: hidden;
+    box-shadow: var(--bs-shadow);
+    background-color: #1a1c1e;
+    @media (max-width: 768px) {
+        height: auto;
+    }
+    &__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(19, 19, 19, 1) 0%,
+                rgba(19, 19, 19, 0.95) 40%,
+                rgba(19, 19, 19, 0.4) 70%,
+                rgba(19, 19, 19, 0) 100%
+            );
+            z-index: 2;
+
+            @media (max-width: 768px) {
+                background: linear-gradient(180deg, rgba(19, 19, 19, 0.95) 0%, rgba(19, 19, 19, 0.7) 100%);
+            }
+        }
+
+        img {
+            object-fit: none;
+        }
+    }
+
+    &__body {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        padding: 0 rem(60);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(40);
+        width: 100%;
+        height: 100%;
+
+        @media (max-width: 768px) {
+            position: relative;
+            inset: auto;
+            padding: rem(30) rem(20);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: rem(24);
+        }
+    }
+
+    &__content {
+        flex: 0 1 rem(600);
+        display: flex;
+        flex-direction: column;
+        gap: rem(8);
+
+        @media (max-width: 768px) {
+            flex: 1 1 100%;
+            width: 100%;
+        }
+    }
+
+    &__title {
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--white-color);
+        text-align: left;
+        letter-spacing: 0.01em;
+    }
+
+    &__text {
+        font-family: var(--bs-font-text);
+        font-size: rem(15);
+        line-height: 1.45;
+        color: #94a3b8;
+        text-align: left;
+        @include adaptiveClamp(font-size, 15, 14);
+    }
+
+    // Кнопка на баннере
+    &__btn {
+        flex-shrink: 0;
+        padding: rem(16) rem(36) !important;
+        font-size: rem(14);
+
+        @media (max-width: 768px) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

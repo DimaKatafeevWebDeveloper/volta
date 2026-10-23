@@ -1,0 +1,186 @@
+.contacts {
+    position: relative;
+    width: 100%;
+    height: rem(550);
+    background-color: var(--gray-light, #f8fafc);
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__container {
+        position: relative;
+        height: 100%;
+        z-index: 5;
+        pointer-events: none;
+        @media (max-width: 768px) {
+            pointer-events: auto;
+            padding: 0;
+        }
+    }
+
+    &__card {
+        position: absolute;
+        top: rem(50);
+        left: rem(40);
+        width: rem(420);
+        background: var(--white-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--bs-radius);
+        padding: rem(35) rem(30);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        pointer-events: auto;
+
+        @media (max-width: 1200px) {
+            left: rem(24);
+        }
+
+        @media (max-width: 768px) {
+            position: relative;
+            top: auto;
+            left: auto;
+            width: 100%;
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+            box-shadow: none;
+            padding: rem(40) rem(20);
+        }
+    }
+
+    &__title {
+        font-weight: 800;
+        color: var(--primary-color);
+        margin-bottom: rem(24);
+        text-align: left;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: rem(20);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+
+        &--legal {
+            border-top: 1px solid var(--border-color);
+            padding-top: rem(14);
+            margin-top: rem(4);
+        }
+    }
+
+    &__label {
+        font-family: var(--bs-font-text);
+        font-size: rem(11);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--gray-color);
+        margin-bottom: rem(4);
+    }
+
+    &__value {
+        font-family: var(--bs-font-text);
+        font-size: rem(15);
+        font-weight: 500;
+        color: var(--primary-color);
+        line-height: 1.4;
+
+        &--link {
+            font-family: var(--bs-font-number);
+            font-size: rem(18);
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--bs-transition);
+
+            &:hover {
+                color: var(--red-color);
+            }
+        }
+    }
+
+    &__sub {
+        font-family: var(--bs-font-text);
+        font-size: rem(12);
+        color: var(--gray-color);
+        margin-top: rem(2);
+    }
+
+    &__map {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        @media (max-width: 768px) {
+            position: relative;
+            height: rem(350);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+
+            filter: invert(1) hue-rotate(180deg);
+        }
+    }
+
+    .socials-contacts {
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+        margin-top: rem(12);
+        width: 100%;
+
+        @media (max-width: 768px) {
+            gap: rem(14);
+            margin-top: rem(14);
+        }
+
+        &__link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: rem(50);
+            height: rem(50);
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+
+            transition:
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s ease,
+                background-color 0.25s ease,
+                box-shadow 0.25s ease !important;
+
+            img {
+                height: rem(30);
+                width: rem(30);
+                object-fit: contain;
+            }
+
+            // Интерактивный ховер-эффект
+            &:hover {
+                background-color: var(--white-color);
+                border-color: var(--red-color);
+                transform: translateY(rem(-2));
+                box-shadow: 0 4px 10px rgba(214, 16, 16, 0.1);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+    }
+}
